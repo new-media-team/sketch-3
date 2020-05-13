@@ -17,11 +17,11 @@ function mouseDragged() {
     //play a middle 'C' for the duration of an 8th note
     var pick = Math.round(Math.random() * list.length);
     var note = list[pick];
-    synth.triggerAttackRelease(note, '8n');
-    
+    var trig = synth.triggerAttackRelease(note, '8n');
+    trig;
     // this draws the same line on everyone else's screen
     // think carefully about the difference between this line:
-    X(`circle(${pmouseX}, ${pmouseY}, ${mouseX} - ${mouseY}); var synth = new Tone.Synth().toMaster(); synth.triggerAttackRelease(${note}, '8n'); `)
+    X(`circle(${pmouseX}, ${pmouseY}, ${mouseX} - ${mouseY}); ${trig};var synth = new Tone.Synth().toMaster(); synth.triggerAttackRelease(${note}, '8n');`)
     // and the 'incorrect' X(`line(pmouseX, pmouseY, mouseX, mouseY)`)
-    X(`places.set('${socket.id}', [${pmouseX}, ${pmouseY}])`)
+    //X(`places.set('${socket.id}', [${pmouseX}, ${pmouseY}])`)
 }
